@@ -29,7 +29,7 @@ app.get('/',(req,res)=>{
     res.send("Working")
 })
 // routes
-app.use("/api/v1",router);
+app.use("/api/v2",router);
 
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on ${process.env.PORT}`);

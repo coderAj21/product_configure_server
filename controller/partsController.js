@@ -14,7 +14,7 @@ exports.createPartsInDatabase=async function(req,res){
             });
         }
         let response=await insert_parts_of_product_in_database(id,name);
-        // console.log(response);
+        console.log(response);
         if(response.success==false){
             return res.status(200).json({
                 success:false,
@@ -86,9 +86,9 @@ async function insert_parts_of_product_in_database(product_id,parts_name){
             }
         }
         let [result]=await sql.query(
-            `insert into parts (product_id,parts_name)
+            `insert into parts (product_id,parts_name,parts_price)
             values
-            (?,?)
+            (?,?,0)
             `
         ,[product_id,parts_name]);
         return result;

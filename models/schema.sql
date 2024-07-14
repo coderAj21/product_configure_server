@@ -12,7 +12,7 @@ create table parts(
     parts_id int unsigned not null primary key auto_increment,
     parts_name varchar(50) not null,
     parts_image varchar(255) not null default "image",
-    parts_price int not null,
+    parts_price int not null default 0,
     foreign key (product_id) references product(product_id),
     unique (product_id,parts_id,parts_name,parts_image)
 );
@@ -50,7 +50,7 @@ create table material(
     sub_parts_id int unsigned,
     material_name varchar(255) not null,
     display_name varchar(100) not null,
-    price int unsigned not null,
+    price int unsigned not null default 0,
     foreign key (sub_parts_id) references sub_parts(sub_parts_id),
     unique(sub_parts_id,material_name,display_name,price)
 );
@@ -67,7 +67,7 @@ create table attribute(
 create table attribute_data(
     attribute_id int unsigned,
     attribute_value varchar(255) not null,
-    attribute_price int unsigned not null,
+    attribute_price int unsigned not null default 0,
     attribute_name varchar(255) not null,
     unique(attribute_id,attribute_value,attribute_price,attribute_name),
     foreign key (attribute_id) references Attribute(attribute_id)
